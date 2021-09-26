@@ -3,6 +3,8 @@ package co.com.sofka.app.calculator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+
 public class BasicCalculator {
 
     private static final Logger logger = LoggerFactory.getLogger(BasicCalculator.class);
@@ -22,17 +24,18 @@ public class BasicCalculator {
         return number1 * number2;
     }
 
-    public float divide(float number1, float number2) {
+    public float divide(float number1, float number2) throws Exception {
+
+        logger.info( "Dividing {} / {}", number1, number2 );
         try {
 
-            logger.info( "Dividing {} / {}", number1, number2 );
             return number1 / number2;
 
-        }catch (Exception){
+        }catch (ArithmeticException arithmeticException){
 
+            throw new Exception(arithmeticException.getMessage());
         }
 
-        return 0;
     }
 
 

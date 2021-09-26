@@ -69,12 +69,12 @@ public class BasicCalculatorTest {
     @DisplayName("Testing several divisions")
     @ParameterizedTest(name = "{0} / {1} = {2}")
     @CsvSource({
-            "17,    0,   NaN",
-            "1,    2,   0.5",
+            "17,    0,   Infinity",
+            "0,    0,   NaN",
             "10,  2, 5",
             "1,  100, 0.01"
     })
-    public void severalDivisions(float first, float second, float expectedResult) {
+    public void severalDivisions(float first, float second, float expectedResult) throws Exception {
         assertEquals(expectedResult, basicCalculator.divide(first, second),
                 () -> first + " / " + second + " should equal " + expectedResult);
     }
